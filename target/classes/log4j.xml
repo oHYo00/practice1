@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.multi.semi">
+	<logger name="com.multi.spring">
 		<level value="info" />
 	</logger>
 	
