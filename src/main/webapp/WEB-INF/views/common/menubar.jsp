@@ -151,7 +151,7 @@ div {
 				<li><a href="${ pageContext.servletContext.contextPath }">여나영</a></li>
 				<li><a href="${ pageContext.servletContext.contextPath }">윤상현</a></li>
 				<li><a href="${ pageContext.servletContext.contextPath }">진수경</a></li>
-				<li><a href="${ pageContext.servletContext.contextPath }">하지은</a></li>
+				<li><a href="${ pageContext.servletContext.contextPath }/hje/task/list">하지은</a></li>
 			</ul>
 		</div>
 	</div>
