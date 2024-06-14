@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+<<<<<<< HEAD
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
@@ -10,6 +11,16 @@
 	<!-- myBatis의 싱글톤 객체 생성 -->
 	<bean id="sqlsession"
 		class="org.mybatis.spring.SqlSessionTemplate">
+=======
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- myBatis의 싱글톤 객체 생성 -->
+	<bean id="sqlsession" class="org.mybatis.spring.SqlSessionTemplate">
+>>>>>>> PJH
 		<constructor-arg ref="config"></constructor-arg>
 	</bean>
 
@@ -22,8 +33,12 @@
 
 	<!-- dbcp의 싱글톤 객체 생성 -->
 	<!-- db프로그램의 2단계까지 담당. driver설정, db연결 -->
+<<<<<<< HEAD
 	<bean id="realDataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
+=======
+	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+>>>>>>> PJH
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
 		<property name="url"
@@ -31,6 +46,7 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="mysql"></property>
 	</bean>
+<<<<<<< HEAD
 	<bean id="dataSource"
 		class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="realDataSource" />
@@ -42,10 +58,30 @@
 		</property>
 	</bean>
 
+=======
+	 <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="realDataSource"/>
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE"/>
+				<property name="sqlPrefix" value="[SQL] "/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	
+>>>>>>> PJH
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
 	</bean>
+<<<<<<< HEAD
 
 	<!-- Transaction 설정 -->
 
@@ -59,5 +95,8 @@
 
 
 
+=======
+	
+>>>>>>> PJH
 </beans>
 

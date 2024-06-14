@@ -21,8 +21,37 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.multi.semi" />
+
+	
+	<context:component-scan base-package="com.multi.spring" />
+	<beans:bean id="commonExceptionHandler" class="com.multi.spring.common.CommonExceptionHandler" />
 	
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean id = "testInterceptor" class="com.multi.spring.common.interceptor.TestInterceptor"/>
+		</interceptor>
+	
+		<interceptor>
+			<mapping path="/member/login"/>
+			<beans:bean id = "loginInterceptor" class="com.multi.spring.common.interceptor.LoginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/game/game_insert_form"/>
+			<beans:bean id = "bListInterceptor" class="com.multi.spring.common.interceptor.BListInterceptor"/>
+		</interceptor>
+	<interceptor>
+			<mapping path="/game/delete_form"/>
+			<beans:bean id = "sListInterceptor" class="com.multi.spring.common.interceptor.BListInterceptor2"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/game/update_form"/>
+			<beans:bean id = "bListInterceptor2" class="com.multi.spring.common.interceptor.BListInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
 	
 </beans:beans>

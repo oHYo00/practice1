@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbsMapper">
+	<insert id="insertBbs" parameterType="bbsDTO">
+        INSERT /* com.uni.shop.board.model.dao.BoardDAO.insertBoard() */
+          INTO bbs 
+        (
+        title
+        , content
+        , writer
+        ,fileName
+        )
+        VALUES
+        (
+         #{ title }
+        , #{ content }
+        , #{ writer }
+        ,#{ fileName }
+        )
+	</insert>
+	<select id="selectBbsList" resultType="bbsDTO">
+		SELECT *
+		FROM bbs 
+	</select>
+		<select id="selectBbsOne" parameterType="bbsDTO" resultType="bbsDTO">
+		SELECT *
+		FROM bbs 
+		where bbsid=#{ bbsid }
+	</select>
+	
+	<select id="selectlistBbs2" resultType="bbsDTO" parameterType="pageDTO">
+		select  rownum, bbsid, title, content, writer
+		from (
+		select ROW_NUMBER() over(order by bbsid desc) as rownum, b.*
+		from bbs b) bbs2
+		where bbs2.rownum between #{start} and #{end}
+	</select>
+
+	<select id="selectCount" resultType="Integer">
+		select count(*) count from bbs
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
