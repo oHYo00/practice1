@@ -1,4 +1,4 @@
-package com.multi.semi.phw;
+package com.multi.spring.board.controller;
 
 
 
